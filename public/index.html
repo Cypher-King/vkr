@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Время в городах России</title>
+</head>
+<body>
+    <h1>Узнайте текущее время в городах России</h1>
+    <select id="city">
+        <option value="Москва">Москва</option>
+        <option value="Санкт-Петербург">Санкт-Петербург</option>
+        <option value="Новосибирск">Новосибирск</option>
+        <option value="Екатеринбург">Екатеринбург</option>
+        <option value="Нижний Новгород">Нижний Новгород</option>
+        <option value="Казань">Казань</option>
+        <option value="Челябинск">Челябинск</option>
+        <option value="Омск">Омск</option>
+        <option value="Самара">Самара</option>
+        <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+    </select>
+    <button onclick="getTime()">Узнать время</button>
+    <p id="time"></p>
+
+    <script>
+        function getTime() {
+            const city = document.getElementById('city').value;
+            fetch(`/time?city=${city}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('time').innerText = `Текущее время в ${city}: ${data.time}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching time:', error);
+                });
+        }
+    </script>
+</body>
+</html>
