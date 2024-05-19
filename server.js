@@ -1,7 +1,7 @@
 const express = require('express');
 const moment = require('moment-timezone');
 const app = express();
-const PORT = 3000;
+const PORT = 80;
 
 // Разрешаем доступ к статическим файлам в каталоге "public"
 app.use(express.static('public'));
